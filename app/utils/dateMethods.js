@@ -26,3 +26,17 @@ export const getMonth = date => {
     const zeroIndexedMonth = date.getMonth();
     return (zeroIndexedMonth + 1).toString();
 }
+
+// get day and return stringified form
+export const getDay = date => {
+    date = date || new Date();
+    return date.getDate().toString();
+}
+
+export const getMonthString = monthInt => {
+    if (typeof monthInt === 'string') {
+        monthInt = parseInt(monthInt)
+    }
+
+    return monthNames[monthInt]
+}
