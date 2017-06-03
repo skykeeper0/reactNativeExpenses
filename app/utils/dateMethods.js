@@ -13,3 +13,16 @@ const monthNames = {
     11: 'November',
     12: 'December'
 }
+
+// get the current year and return stringified form
+export const getYear = date => {
+    date = date || new Date();
+    return date.getFullYear().toString();
+}
+
+// get current month and return number
+export const getMonth = date => {
+    date = date || new Date();
+    const zeroIndexedMonth = date.getMonth();
+    return (zeroIndexedMonth + 1).toString();
+}
