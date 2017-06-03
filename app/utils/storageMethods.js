@@ -49,9 +49,10 @@ export const checkCurrentMonthBudget = async () => {
 
 }
 
-// accept a month and year as stringified numbers and a number as budget.
-// Then create a month object and stores it in the right year in our list 
-// of expense, save to AsyncStorage in the end
+/* accept a month and year as stringified numbers and a number as budget.
+ Then create a month object and stores it in the right year in our list 
+  of expense, save to AsyncStorage in the end
+*/
 export const saveMonthlyBudget = {
 
 }
@@ -61,4 +62,15 @@ save the object to the month and year
 */
 export const saveExpenseToMonth = {
 
+}
+
+/* Development method to erase the list when we need to
+*/
+export const resetAsyncStorage  = {
+
+}
+
+// Development method to log the object in AsyncStorage so we can view it
+export const logAsyncStogae = {
+    
 }
