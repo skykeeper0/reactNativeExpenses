@@ -45,16 +45,30 @@ export const checkCurrentMonthBudget = async () => {
     const year  = dateMethods.getYear();
 
     const response = await getAsyncStorage();
+    const parsedData = JSON.parse(response)
+    
+    if (parsedData[year]) {
+        if (parsedData[year][month]) {
+            if (parsedData[year][month].budget) {
+                return parsedData[year][month].budget
+            }
+        }
+    }
 
-
+    return false;
 }
 
 /* accept a month and year as stringified numbers and a number as budget.
  Then create a month object and stores it in the right year in our list 
   of expense, save to AsyncStorage in the end
 */
-export const saveMonthlyBudget = {
+export const saveMonthlyBudget = async (month, year, budget) => {
+    const response = await getAsyncStorage();
+    const parsedData = JSON.parse(response);
 
+    parsedData[year][moth].budget = budget 
+
+    await setAsyncStorage(parsedData)
 }
 
 /* accept an expense object, month and year as stringified number. Then 
@@ -72,5 +86,5 @@ export const resetAsyncStorage  = {
 
 // Development method to log the object in AsyncStorage so we can view it
 export const logAsyncStogae = {
-    
+
 }
