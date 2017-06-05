@@ -74,7 +74,11 @@ export const saveMonthlyBudget = async (month, year, budget) => {
 /* accept an expense object, month and year as stringified number. Then 
 save the object to the month and year
 */
-export const saveExpenseToMonth = {
+export const saveExpenseToMonth = async (month, year, expense) => {
+    const response = await getAsyncStorage();
+    const parsedData = JSON.parse(response);
+
+    
 
 }
 
