@@ -107,23 +107,23 @@ describe('saveMonthlyBudget ', () => {
         await AsyncStorage.setItem('test', JSON.stringify(seeded_expenses))
     })
 
-    afterAll( () => {
+    afterAll( async () => {
         await AsyncStorage.setItem('test', '')
     })
 
-    xit('should add new month to the year with budget if none exist', async () => {
+    it('should add new month to the year with budget if none exist', async () => {
         await saveMonthlyBudget('02','2017', 3000)
         const expenses = getAsyncStorage();
         expect(expenses['2017']['02'].budget).tobe(3000)
     })
 
-    xit('should replace the current month budget if it already exist', () => {
+    it('should replace the current month budget if it already exist', async () => {
         await saveMonthlyBudget('02','2017', 4000)
         const expenses = getAsyncStorage();
         expect(expenses['2017']['02'].budget).tobe(4000)
     })
 
-    xit('should add new month and year if none of them exsit yet', () => {
+    it('should add new month and year if none of them exsit yet', async () => {
         await saveMonthlyBudget('01','2018', 400000)
         const expenses = getAsyncStorage();
         expect(expenses['2018']['01'].budget).tobe(400000)
