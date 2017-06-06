@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "export NODE_ENV=test && jest"
+    "test": "export NODE_ENV=test && jest --coverage"
   },
   "dependencies": {
     "react": "16.0.0-alpha.6",
@@ -22,7 +22,7 @@
     "testEnvironment": "node",
     "preset": "react-native",
     "collectCoverageFrom": [
-      "app/*.js"
+      "*/*.js"
     ],
     "coverageThreshold": {
       "global": {
