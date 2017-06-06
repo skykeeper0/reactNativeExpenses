@@ -1,10 +1,11 @@
 import { AsyncStorage } from 'react-native';
 import * as dateMethods from './dateMethods'
 
+let writeLocation;
 if (process.env.NODE_ENV == 'test') {
-  const writeLocation = 'test'
+  writeLocation = 'test'
 } else {
-  const writeLocation = 'expenses'
+  writeLocation = 'expenses'
 }
 
 
@@ -34,7 +35,7 @@ if (process.env.NODE_ENV == 'test') {
 
 // retreive the list of expenses
 export const getAsyncStorage = async () => {
-    const response = await AsyncStorage.getItem('test')
+    const response = await AsyncStorage.getItem(writeLocation)
     const parsedData = JSON.parse(response) || {}
 
     return parsedData;
@@ -42,7 +43,7 @@ export const getAsyncStorage = async () => {
 
 // save list of expenses into AsyncStorage
 export const setAsyncStorage = expenses => {
-    return AsyncStorage.setItem('test', JSON.stringify(expenses))
+    return AsyncStorage.setItem(writeLocation, JSON.stringify(expenses))
 }
 
 // check and return if there are a budget for that month

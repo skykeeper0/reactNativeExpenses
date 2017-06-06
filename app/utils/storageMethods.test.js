@@ -53,9 +53,10 @@ describe('getAsyncStorage', () => {
 })
 
 describe('setAsyncStorage', () => {
-  const expenses = {'a':'b'}
+  const expenses_testcase1 = {'a':'b'}
+  const expenses_testcase2 = {'b': 'c'}
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     await AsyncStorage.setItem('test', '')
   })
 
@@ -64,12 +65,14 @@ describe('setAsyncStorage', () => {
   })
 
  it('should be able set data into Storage when storage is empty', async () => {
-    await setAsyncStorage(expenses)
+    await setAsyncStorage(expenses_testcase1)
     const data = await AsyncStorage.getItem('test')
-    expect(JSON.parse(data)).toEqual(expenses)
+    expect(JSON.parse(data)).toEqual(expenses_testcase1)
   })
 
- xit('should be able set data into Storage when storage isnt empty', () => {
-
+ it('should be able set data into Storage when storage isnt empty', async () => {
+    await setAsyncStorage(expenses_testcase2)
+    const data = await AsyncStorage.getItem('test')
+    expect(JSON.parse(data)).toEqual(expenses_testcase2)
   })
 })
