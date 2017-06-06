@@ -1,4 +1,4 @@
-import { getAsyncStorage } from './storageMethods';
+import { getAsyncStorage, setAsyncStorage } from './storageMethods';
 
 import MockStorage from './MockStorage';
 
@@ -38,8 +38,12 @@ describe('getAsyncStorage', () => {
   // add seeededData into Storage and check the data it got back
   const expenses = {'a':'b'}
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     await AsyncStorage.setItem('test', JSON.stringify(expenses))
+  })
+
+  afterAll(async () => {
+    await AsyncStorage.setItem('test', '')
   })
 
   it('should be able to load data from AsyncStorage', async () => {
@@ -48,13 +52,24 @@ describe('getAsyncStorage', () => {
   })
 })
 
-// xdescribe('setAsyncStorage', () => {
+describe('setAsyncStorage', () => {
+  const expenses = {'a':'b'}
 
-//  xit('should be able set data into Storage when storage is empty', () => {
+  beforeEach(async () => {
+    await AsyncStorage.setItem('test', '')
+  })
 
-//   })
+  afterEach(async () => {
+    await AsyncStorage.setItem('test', '')
+  })
 
-//  xit('should be able set data into Storage when storage isnt empty', () => {
+ it('should be able set data into Storage when storage is empty', async () => {
+    await setAsyncStorage(expenses)
+    const data = await AsyncStorage.getItem('test')
+    expect(JSON.parse(data)).toEqual(expenses)
+  })
 
-//   })
-// })
+ xit('should be able set data into Storage when storage isnt empty', () => {
+
+  })
+})
