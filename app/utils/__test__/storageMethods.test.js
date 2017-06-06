@@ -5,7 +5,7 @@ import {
     saveMonthlyBudget,
     resetAsyncStorage,
     logAsyncStogae
-} from './storageMethods';
+} from '../storageMethods';
 
 import MockStorage from './MockStorage';
 
