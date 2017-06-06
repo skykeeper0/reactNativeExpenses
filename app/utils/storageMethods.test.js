@@ -1,4 +1,9 @@
-import { getAsyncStorage, setAsyncStorage } from './storageMethods';
+import { 
+    getAsyncStorage, 
+    setAsyncStorage, 
+    checkCurrentMonthBudget, 
+    saveMonthlyBudget
+} from './storageMethods';
 
 import MockStorage from './MockStorage';
 
@@ -75,4 +80,52 @@ describe('setAsyncStorage', () => {
     const data = await AsyncStorage.getItem('test')
     expect(JSON.parse(data)).toEqual(expenses_testcase2)
   })
+})
+
+describe('checkCurrentMonthBudget ', () => {
+    beforeAll(async () => {
+        await AsyncStorage.setItem('test', JSON.stringify(seeded_expenses))
+    })
+
+    afterAll(async () => {
+        await AsyncStorage.setItem('test', '')
+    })
+
+    it('should return the budget if budget exist', () => {
+        const budget1 = checkCurrentMonthBudget('01', '2017');
+        expect(budget1).toBe(500);
+    })
+
+    it('should return false if the budget doesnt exist', () => {
+        const budget2 = checkCurrentMonthBudget('02', '2017')
+        expect(budget2).toBe(false)
+    })
+})
+
+describe('saveMonthlyBudget ', () => {
+    beforeAll( async () => {
+        await AsyncStorage.setItem('test', JSON.stringify(seeded_expenses))
+    })
+
+    afterAll( () => {
+        await AsyncStorage.setItem('test', '')
+    })
+
+    xit('should add new month to the year with budget if none exist', async () => {
+        await saveMonthlyBudget('02','2017', 3000)
+        const expenses = getAsyncStorage();
+        expect(expenses['2017']['02'].budget).tobe(3000)
+    })
+
+    xit('should replace the current month budget if it already exist', () => {
+        await saveMonthlyBudget('02','2017', 4000)
+        const expenses = getAsyncStorage();
+        expect(expenses['2017']['02'].budget).tobe(4000)
+    })
+
+    xit('should add new month and year if none of them exsit yet', () => {
+        await saveMonthlyBudget('01','2018', 400000)
+        const expenses = getAsyncStorage();
+        expect(expenses['2018']['01'].budget).tobe(400000)
+    })
 })
