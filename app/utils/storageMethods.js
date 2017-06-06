@@ -47,17 +47,13 @@ export const setAsyncStorage = expenses => {
 }
 
 // check and return if there are a budget for that month
-export const checkCurrentMonthBudget = async () => {
-    const month = dateMethods.getMonth();
-    const year  = dateMethods.getYear();
-
-    const response = await getAsyncStorage();
-    const parsedData = JSON.parse(response)
+export const checkCurrentMonthBudget = async (month, year) => {
+    const parsedData = await getAsyncStorage();
     
     if (parsedData[year]) {
         if (parsedData[year][month]) {
             if (parsedData[year][month].budget) {
-                return parsedData[year][month].budget
+                return parsedData[year][month]['budget']
             }
         }
     }
