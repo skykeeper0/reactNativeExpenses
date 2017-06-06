@@ -18,6 +18,7 @@
     "react-test-renderer": "16.0.0-alpha.6"
   },
   "jest": {
+    "testEnvironment": "node",
     "preset": "react-native",
     "collectCoverageFrom": [
       "app/*.js"
@@ -26,6 +27,9 @@
       "global": {
         "functions": 70
       }
-    }
+    },
+    "testMatch": [
+      "**/__tests__/**/*.js?(x)", "**/?(*.)(spec|test).js?(x)" 
+    ]
   }
 }
