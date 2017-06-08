@@ -17,7 +17,7 @@ describe('getYear ', () => {
     expect(year).toBe('2017')
   })
 
-  it('should return year of the input day if it exist', () => {
+  it('should return year of the input day when it exist', () => {
     const year = getYear(date);
     expect(year).toBe('2018')
   })
@@ -34,11 +34,25 @@ describe('getMonth ', () => {
     expect(month).toBe('1')
   })
 
-  it('should return month of the input date if it exist', () => {
+  it('should return month of the input date when it exist', () => {
     const month = getMonth(date);
     expect(month).toBe('2')
   })
 })
 
+describe('getDay ', () => {
+
+  beforeAll( () => {
+    MockDate.set('1/1/2017');
+  })
+
+  it('should return current day if there are no input', () => {
+
+  })
+
+  it('should return the day of the input date when it exist', () => {
+    
+  })
+})
 
 MockDate.reset()
