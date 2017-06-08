@@ -22,9 +22,6 @@ export const getYear = date => {
 
 // get current month and return number
 export const getMonth = date => {
-    if (!date) {
-        console.log(new Date())
-    }
     date = date || new Date();
     const zeroIndexedMonth = date.getMonth();
     return (zeroIndexedMonth + 1).toString();
@@ -36,6 +33,7 @@ export const getDay = date => {
     return date.getDate().toString();
 }
 
+// take in a month in int and return month string
 export const getMonthString = monthInt => {
     if (typeof monthInt === 'string') {
         monthInt = parseInt(monthInt)

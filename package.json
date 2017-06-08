@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "export NODE_ENV=test && jest --coverage"
+    "test": "export NODE_ENV=test && jest "
   },
   "dependencies": {
     "react": "16.0.0-alpha.6",
