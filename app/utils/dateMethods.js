@@ -22,7 +22,9 @@ export const getYear = date => {
 
 // get current month and return number
 export const getMonth = date => {
-    console.log(date)
+    if (!date) {
+        console.log(new Date())
+    }
     date = date || new Date();
     const zeroIndexedMonth = date.getMonth();
     return (zeroIndexedMonth + 1).toString();
