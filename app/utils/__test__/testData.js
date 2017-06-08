@@ -1,4 +1,4 @@
-const seeded_expenses = {
+export const seeded_expenses = {
         '2017': {
             '01': {
                 budget: 500,

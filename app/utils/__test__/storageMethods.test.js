@@ -14,7 +14,7 @@ const AsyncStorage = new MockStorage(storageCache);
 
 jest.setMock('AsyncStorage', AsyncStorage)
 
-import seeded_expenses from './testData.js'
+import { seeded_expenses } from './testData.js'
 
 it('Mock Async Storage working', async () => {
   await AsyncStorage.setItem('myKey','myValue')
@@ -66,6 +66,7 @@ describe('setAsyncStorage', () => {
 })
 
 describe('checkCurrentMonthBudget ', () => {
+
     beforeAll(async () => {
         await AsyncStorage.setItem('test', JSON.stringify(seeded_expenses))
     })
@@ -74,12 +75,12 @@ describe('checkCurrentMonthBudget ', () => {
         await AsyncStorage.setItem('test', '')
     })
 
-    xit('should return the budget if budget exist', async () => {
+    it('should return the budget if budget exist', async () => {
         const budget1 = await checkCurrentMonthBudget('01', '2017');
         expect(budget1).toBe(500);
     })
 
-    xit('should return false if the budget doesnt exist', async () => {
+    it('should return false if the budget doesnt exist', async () => {
         const budget2 = await checkCurrentMonthBudget('02', '2017')
         expect(budget2).toBe(false)
     })

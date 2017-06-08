@@ -48,7 +48,11 @@ export const setAsyncStorage = expenses => {
 
 // check and return if there are a budget for that month
 export const checkCurrentMonthBudget = async (month, year) => {
-    const parsedData = await getAsyncStorage();
+    // const parsedData = await getAsyncStorage();
+    const response = await AsyncStorage.getItem(writeLocation)
+    const parsedData = JSON.parse(response) || {}
+
+    console.log(parsedData)
     
     if (parsedData[year]) {
         if (parsedData[year][month]) {
