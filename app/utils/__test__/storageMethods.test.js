@@ -70,7 +70,7 @@ describe('checkCurrentMonthBudget ', () => {
         await AsyncStorage.setItem('test', JSON.stringify(seeded_expenses))
     })
 
-    xafterAll(async () => {
+    afterAll(async () => {
         await AsyncStorage.setItem('test', '')
     })
 

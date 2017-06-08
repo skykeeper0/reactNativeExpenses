@@ -1,9 +1,9 @@
 import seeded_expenses from './testData.js';
 import MockDate from 'mockdate';
-import { getYear } from '../dateMethods.js';
+import { getYear, getMonth } from '../dateMethods.js';
 
 
-const date = new Date(2018, 2, 1)
+const date = new Date(2018,1,2)
 
 // set the current time to 1/1/2017
 MockDate.set('1/1/2017');
@@ -18,6 +18,18 @@ describe('getYear ', () => {
   it('should return year of the input day if it exist', () => {
     const year = getYear(date);
     expect(year).toBe('2018')
+  })
+})
+
+describe('getMonth ', () => {
+  it('should return current month if there are no input', () => {
+    const month = getMonth();
+    expect(month).toBe('1')
+  })
+
+  it('should return month of the input date if it exist', () => {
+    const month = getMonth(date);
+    expect(month).toBe('2')
   })
 })
 
