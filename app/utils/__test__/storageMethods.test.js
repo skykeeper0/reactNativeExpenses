@@ -70,16 +70,16 @@ describe('checkCurrentMonthBudget ', () => {
         await AsyncStorage.setItem('test', JSON.stringify(seeded_expenses))
     })
 
-    afterAll(async () => {
+    xafterAll(async () => {
         await AsyncStorage.setItem('test', '')
     })
 
-    it('should return the budget if budget exist', async () => {
+    xit('should return the budget if budget exist', async () => {
         const budget1 = await checkCurrentMonthBudget('01', '2017');
         expect(budget1).toBe(500);
     })
 
-    it('should return false if the budget doesnt exist', async () => {
+    xit('should return false if the budget doesnt exist', async () => {
         const budget2 = await checkCurrentMonthBudget('02', '2017')
         expect(budget2).toBe(false)
     })
