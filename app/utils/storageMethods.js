@@ -95,11 +95,18 @@ export const saveExpenseToMonth = async (month, year, expense) => {
 
 /* Development method to erase the list when we need to
 */
-export const resetAsyncStorage  = {
-
+export const resetAsyncStorage  = async () => {
+    return AsyncStorage.setItem(writeLocation, '{}')
 }
 
 // Development method to log the object in AsyncStorage so we can view it
-export const logAsyncStogae = {
+// export const logAsyncStogae = {switch (key) {
+//     case value:
+        
+//         break;
 
-}
+//     default:
+//         break;
+// }
+
+// }

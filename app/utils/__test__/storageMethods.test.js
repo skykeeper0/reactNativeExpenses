@@ -123,9 +123,10 @@ describe('resetAsyncStorage ', () => {
         await AsyncStorage.setItem('test', '')
     })
 
-    xit('should erase data in AsyncStorage', () => {
-        const data = AsyncStorage.getItem('test')
-        expect(data).toEqual({})
+    it('should erase data in AsyncStorage', async () => {
+        resetAsyncStorage();
+        const data = await getAsyncStorage();
+        expect(data).toEqual({});
     })
 })
 
