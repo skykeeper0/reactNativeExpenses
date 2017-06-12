@@ -130,9 +130,9 @@ describe('resetAsyncStorage ', () => {
     })
 })
 
-describe('logAsyncStorage ', () => {
+// describe('logAsyncStorage ', () => {
 
-    xit('should log data in AsyncStorage', () => {
+//     it('should log data in AsyncStorage', () => {
 
-    })
-})
+//     })
+// })

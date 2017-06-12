@@ -100,13 +100,7 @@ export const resetAsyncStorage  = async () => {
 }
 
 // Development method to log the object in AsyncStorage so we can view it
-// export const logAsyncStogae = {switch (key) {
-//     case value:
-        
-//         break;
-
-//     default:
-//         break;
-// }
-
-// }
+export const logAsyncStorage = async (key) => {
+    const data = await getAsyncStorage();
+    console.log(data)
+}
